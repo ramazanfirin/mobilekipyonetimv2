@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+
+    
+ 	<LinearLayout 
+		android:layout_width="wrap_content" 
+		android:layout_height="0dip"
+        android:layout_weight="1" 
+		android:orientation="vertical">
+        
+		 <ListView android:layout_width="wrap_content"   
+           android:layout_height="wrap_content"
+           android:id="@+id/list">  
+    </ListView>  
+    
+	</LinearLayout>
+ 
+
+  
+  <Button android:text="Yenile" 
+        android:id="@+id/testReceiver"
+        android:layout_height="wrap_content" 
+        android:layout_width="fill_parent"
+        android:onClick="refreshPage"
+        ></Button>
+       
+</LinearLayout> 

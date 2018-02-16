@@ -1,0 +1,110 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tableLayout1"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    
+    
+ <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+ 
+        <TextView
+            android:id="@+id/textView1"
+            android:text="Ilce"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+        <Spinner 
+       android:layout_height="wrap_content" 
+       android:layout_width="match_parent" 
+  	   android:id="@+id/ilceSpinner"
+  	   android:popupBackground="@android:color/holo_green_dark" 
+  	   >
+</Spinner>
+
+        
+    </TableRow>
+    
+ 
+ 
+  <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+ 
+        <TextView
+            android:id="@+id/textView2"
+            android:text="Mahalle"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+        <Spinner 
+       android:layout_height="wrap_content" 
+       android:layout_width="match_parent" 
+  	   android:id="@+id/mahalleSpinner"
+  	   android:popupBackground="@android:color/holo_green_dark" >
+</Spinner>
+
+        
+    </TableRow>
+    
+    
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+ 
+        <TextView
+            android:id="@+id/textView3"
+            android:text="Sokak"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+        <Spinner 
+       android:layout_height="wrap_content" 
+       android:layout_width="match_parent" 
+  	   android:id="@+id/sokakSpinner"
+  	   android:popupBackground="@android:color/holo_green_dark" >
+</Spinner>
+
+        
+    </TableRow>
+    
+     <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+ 
+        <TextView
+            android:id="@+id/textView4"
+            android:text="Bina/Kapi No"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+ 
+        <Spinner 
+       android:layout_height="wrap_content" 
+       android:layout_width="match_parent" 
+  	   android:id="@+id/binaSpinner"
+  	   android:popupBackground="@android:color/holo_green_dark" >
+</Spinner>
+
+        
+    </TableRow>
+    
+     <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="5dip" >
+ 
+        <Button
+            android:id="@+id/buttonGoster"
+            android:text="Göster"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+
+        
+    </TableRow>
+    
+</TableLayout>    

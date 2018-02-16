@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">MobilEkipYonetim</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <string name="regControl">Kayıt Kontrol</string>
+    <string name="register">Kayıt Ol</string>
+
+    <string name="serverUrl">http://104.199.243.209:8080/Navigator/rest</string>
+    <string name="serverUrl2">http://192.168.56.1:8080/Navigator/rest</string>
+    <string name="serverUrl3">http://104.199.243.209:8080/Navigator/rest</string>
+    <string name="sender">160087228600</string>
+    <string name="emulator">false</string>
+</resources>
