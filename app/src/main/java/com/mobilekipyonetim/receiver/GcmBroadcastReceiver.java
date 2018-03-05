@@ -33,6 +33,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.gcm.GoogleCloudMessaging;
+import com.mobilekipyonetim.R;
 import com.mobilekipyonetim.activity.DetailsActivity;
 import com.mobilekipyonetim.activity.MainActivity;
 import com.mobilekipyonetim.application.MyApplication;
@@ -96,8 +97,9 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
 			   	 	MyApplication myApplication = (MyApplication)context.getApplicationContext() ;
 			   	 	myApplication.startTracking(orderId, dest);
 			   	 	
-			   	 	String uri2 ="route66://?daddr="+latValue+","+lngValue;
-			   	   Toast.makeText(context.getApplicationContext(),uri2, Toast.LENGTH_LONG).show();
+			   	 	//String uri2 ="route66://?daddr="+latValue+","+lngValue;
+					String uri2 ="http://maps.google.com/maps?f=d&daddr="+latValue+","+lngValue;
+					Toast.makeText(context.getApplicationContext(),uri2, Toast.LENGTH_LONG).show();
 			   	
 			   		Intent newIntent = new Intent(Intent.ACTION_VIEW);
 			   		newIntent.setData(Uri.parse(uri2));
@@ -146,6 +148,7 @@ public class GcmBroadcastReceiver extends BroadcastReceiver {
                 new NotificationCompat.Builder(ctx)
         //.setSmallIcon(R.drawable.ic_stat_gcm)
         .setContentTitle("GCM Notification")
+		.setSmallIcon(R.drawable.ic_dashboard_black_24dp)
         .setStyle(new NotificationCompat.BigTextStyle()
         .bigText(msg))
         .setContentText(msg);

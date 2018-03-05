@@ -30,8 +30,20 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.List;
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 public class ManuelSelectionActivity extends ActionBarActivity implements OnItemSelectedListener {
+
+	int mCorePoolSize = 60;
+	int mMaximumPoolSize = 80;
+	int mKeepAliveTime = 10;
+	BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(mMaximumPoolSize);
+	Executor mCustomThreadPoolExecutor = new ThreadPoolExecutor(mCorePoolSize, mMaximumPoolSize, mKeepAliveTime, TimeUnit.SECONDS, workQueue);
+
 
 	KeyValueDTO[] ilceList =new  KeyValueDTO[0] ;
 	KeyValueDTO[] mahalleList =new  KeyValueDTO[0] ;
@@ -54,8 +66,10 @@ public class ManuelSelectionActivity extends ActionBarActivity implements OnItem
 		setContentView(R.layout.activity_manuel_selection);
 		final Activity mainAcrivity = this;
 		
-		new IlceTask(this).execute();
-		
+		new IlceTask(this).executeOnExecutor(mCustomThreadPoolExecutor);
+
+
+
 		ilceSpinner = (Spinner) findViewById(R.id.ilceSpinner);
 		mahalleSpinner = (Spinner) findViewById(R.id.mahalleSpinner);
 		sokakSpinner = (Spinner) findViewById(R.id.sokakSpinner);
@@ -64,7 +78,28 @@ public class ManuelSelectionActivity extends ActionBarActivity implements OnItem
 //		ArrayAdapter<KeyValueDTO> adapter = new ArrayAdapter<KeyValueDTO>(getApplicationContext(), android.R.layout.simple_spinner_item,ilceList);
 //		adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 //		ilceSpinner.setAdapter(adapter);
-		
+
+/*
+		Thread thread = new Thread(new Runnable(){
+			@Override
+			public void run(){
+				List<KeyValueDTO> resultList = ManuelSelectionUtil.convert(ManuelSelectionUtil.getIlceListAsString());
+				final ArrayAdapter<KeyValueDTO> adapter = new ArrayAdapter<KeyValueDTO>(getApplicationContext(), R.layout.spinner_item,ManuelSelectionUtil.convertToArray(resultList));
+				//adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+				adapter.setDropDownViewResource(android.R.layout.simple_list_item_1);
+
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						ilceSpinner.setAdapter(adapter);	}
+				});
+
+
+			}
+		});
+		thread.start();
+
+*/
 		ilceSpinner.setOnItemSelectedListener(new OnItemSelectedListener(){
 			public void onItemSelected(AdapterView<?> parent, View view,
                                        int pos, long id) {
@@ -72,7 +107,7 @@ public class ManuelSelectionActivity extends ActionBarActivity implements OnItem
 			 if (pos==0)
 				 return ;
 			 KeyValueDTO dto = (KeyValueDTO)parent.getItemAtPosition(pos);
-			 new MahalleTask(mainAcrivity).execute(dto.getKey());
+			 new MahalleTask(mainAcrivity).executeOnExecutor(mCustomThreadPoolExecutor,dto.getKey());
 			}
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
@@ -85,7 +120,7 @@ public class ManuelSelectionActivity extends ActionBarActivity implements OnItem
 			 if (pos==0)
 				 return ;
 			 KeyValueDTO dto = (KeyValueDTO)parent.getItemAtPosition(pos);
-			 new SokakTask(mainAcrivity).execute(dto.getKey());
+			 new SokakTask(mainAcrivity).executeOnExecutor(mCustomThreadPoolExecutor,dto.getKey());
 			}
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
@@ -98,7 +133,7 @@ public class ManuelSelectionActivity extends ActionBarActivity implements OnItem
 			 if (pos==0)
 				 return ;
 			 KeyValueDTO dto = (KeyValueDTO)parent.getItemAtPosition(pos);
-			 new BinaTask(mainAcrivity).execute(dto.getKey());
+			 new BinaTask(mainAcrivity).executeOnExecutor(mCustomThreadPoolExecutor,dto.getKey());
 			}
 			public void onNothingSelected(AdapterView<?> arg0) {
 			}
@@ -125,7 +160,7 @@ public class ManuelSelectionActivity extends ActionBarActivity implements OnItem
 			public void onClick(View v) {
 				if("Seciniz".equals(binaId) || binaId == null || binaId.equals(""))
 					return;
-				new GetCoordinateTask().execute(binaId.toString());
+				new GetCoordinateTask().executeOnExecutor(mCustomThreadPoolExecutor,binaId.toString());
 				
 				
 			}

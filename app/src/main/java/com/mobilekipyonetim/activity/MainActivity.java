@@ -2,6 +2,7 @@ package com.mobilekipyonetim.activity;
 
 import android.app.TabActivity;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -12,6 +13,7 @@ import android.widget.TabHost.TabSpec;
 
 import com.mobilekipyonetim.R;
 import com.mobilekipyonetim.application.MyApplication;
+import com.mobilekipyonetim.service.BackgroundTask;
 import com.mobilekipyonetim.service.GCMRegisterCheckTask;
 import com.mobilekipyonetim.service.GCMRegisterTask;
 
@@ -48,11 +50,14 @@ public class MainActivity extends TabActivity {
 	 @Override
 		public boolean onOptionsItemSelected(MenuItem item) {
 			if (item.getItemId() == R.id.regControl) {
-				new GCMRegisterCheckTask(this).execute(getServerUrl()+"/hello/checkRegister/"+getDeviceId());
+				new GCMRegisterCheckTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,getServerUrl()+"/hello/checkRegister/"+getDeviceId());
+				//new BackgroundTask().execute();
+				//new BackgroundTask().executeOnExecutor();
 			}
 			
 			if (item.getItemId() == R.id.register) {
-				new GCMRegisterTask(getApplication(),getSENDER_ID()).execute(getServerUrl()+"/hello/RegisterId/"+getDeviceId());
+				String asd=getServerUrl()+"/hello/RegisterId/"+getDeviceId();
+				new GCMRegisterTask(getApplication(),getSENDER_ID()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,asd);
 			}
 			return super.onOptionsItemSelected(item);
 		}

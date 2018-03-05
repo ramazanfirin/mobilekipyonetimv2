@@ -107,7 +107,8 @@ public class DetailsActivity extends BaseActivity //implements ConnectionCallbac
             		 //newIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             		 startActivity(chooser);
             	 }else{
-            		 String uri ="route66://?daddr="+latValue+","+lngValue;
+            		 //String uri ="route66://?daddr="+latValue+","+lngValue;
+					 String uri ="http://maps.google.com/maps?f=d&daddr="+latValue+","+lngValue;
             		 //uri ="route66://?daddr=41.0249,29.1226";
 //            		 Intent intent = new Intent(Intent.ACTION_VIEW);
 //            		 intent.setData(Uri.parse(uri));

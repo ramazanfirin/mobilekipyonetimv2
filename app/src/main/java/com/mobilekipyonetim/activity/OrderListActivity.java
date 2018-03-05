@@ -1,6 +1,7 @@
 package com.mobilekipyonetim.activity;
 
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -35,11 +36,11 @@ public class OrderListActivity extends BaseActivity{
 	 @Override
 		public boolean onOptionsItemSelected(MenuItem item) {
 			if (item.getItemId() == R.id.regControl) {
-				new GCMRegisterCheckTask(this).execute(getServerUrl()+"/hello/checkRegister/"+getDeviceId());
+				new GCMRegisterCheckTask(this).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,getServerUrl()+"/hello/checkRegister/"+getDeviceId());
 			}
 			
 			if (item.getItemId() == R.id.register) {
-				new GCMRegisterTask(getApplication(),getSENDER_ID()).execute(getServerUrl()+"/hello/RegisterId/"+getDeviceId());
+				new GCMRegisterTask(getApplication(),getSENDER_ID()).executeOnExecutor(AsyncTask.THREAD_POOL_EXECUTOR,getServerUrl()+"/hello/RegisterId/"+getDeviceId());
 			}
 			return super.onOptionsItemSelected(item);
 		}
@@ -93,7 +94,7 @@ public class OrderListActivity extends BaseActivity{
 
 //new RequestItemsServiceTask().execute(getServerUrl()+"/hello/"+getDeviceId());
       try {
-		new GetOrderListTask(this).execute(getServerUrl()+"/hello/"+getDeviceId());
+		new GetOrderListTask(this).executeOnExecutor(mCustomThreadPoolExecutor,getServerUrl()+"/hello/"+getDeviceId());
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();

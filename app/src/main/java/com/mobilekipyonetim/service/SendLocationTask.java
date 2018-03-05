@@ -35,7 +35,7 @@ public class SendLocationTask extends AsyncTask<String, Void, String> {
             HttpClient httpclient = new DefaultHttpClient();
  
             // make GET request to the given URL
-            HttpResponse httpResponse = httpclient.execute(new HttpGet(arg[0]));
+            HttpResponse httpResponse = httpclient.execute(new HttpGet(arg[1]));
  
             // receive response as inputStream
             if(httpResponse.getEntity() ==null)

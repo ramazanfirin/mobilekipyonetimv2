@@ -47,7 +47,8 @@ public class MyApplication extends Application {
 	}
 	
 	public void startTracking(String orderId, Location destination){
-		Log.i("mobilEkip", "tracking basladi");
+	/*
+			Log.i("mobilEkip", "tracking basladi");
 		prepare();
 		locationListener = new MyLocationListener(); 
 		  MyLocationListener listener = getLocationListener();
@@ -72,7 +73,7 @@ public class MyApplication extends Application {
 //			  }
 //		  }
 		  
-	
+	*/
 	}
 	  
 	public void stopTracking(){

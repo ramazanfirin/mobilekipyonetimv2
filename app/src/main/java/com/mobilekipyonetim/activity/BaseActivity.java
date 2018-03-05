@@ -12,8 +12,21 @@ import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.mobilekipyonetim.R;
 import com.mobilekipyonetim.application.MyApplication;
 import com.mobilekipyonetim.listener.MyLocationListener;
+
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.Executor;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+
 public class BaseActivity extends Activity {
-	 
+
+	int mCorePoolSize = 60;
+	int mMaximumPoolSize = 80;
+	int mKeepAliveTime = 10;
+	BlockingQueue<Runnable> workQueue = new LinkedBlockingQueue<Runnable>(mMaximumPoolSize);
+	Executor mCustomThreadPoolExecutor = new ThreadPoolExecutor(mCorePoolSize, mMaximumPoolSize, mKeepAliveTime, TimeUnit.SECONDS, workQueue);
+
 
 
 	public LocationManager locationManager;

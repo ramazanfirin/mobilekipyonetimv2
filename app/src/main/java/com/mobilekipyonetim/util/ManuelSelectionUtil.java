@@ -1,5 +1,8 @@
 package com.mobilekipyonetim.util;
 
+import android.content.res.Resources;
+
+import com.mobilekipyonetim.R;
 import com.mobilekipyonetim.activity.KeyValueDTO;
 
 import org.apache.http.HttpResponse;
@@ -17,7 +20,8 @@ import java.util.List;
 
 public class ManuelSelectionUtil {
 	
-	 static String serverAddress  ="http://104.199.243.209:8080";
+	static String serverAddress  ="http://www.masterteknoloji.net:8080";
+	//static String  serverAddress = Resources.getSystem().getString(R.string.serverUrl);
 
 	public static KeyValueDTO[] getIlceList(){
 		return convertToArray(getData("getIlceList"));
