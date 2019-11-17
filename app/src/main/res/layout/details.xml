@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
@@ -97,20 +98,30 @@
 </TextView>  
 
     <TextView
- android:id="@+id/id"   
- android:layout_width="fill_parent"   
- android:layout_height="wrap_content"  
- android:padding="10dp"  
- android:textSize="16sp" 
-  android:visibility="gone" 
- >  
-</TextView>  
+ android:id="@+id/id"
+ android:layout_width="fill_parent"
+ android:layout_height="wrap_content"
+ android:padding="10dp"
+ android:textSize="16sp"
+  android:visibility="gone"
+ >
+</TextView>
 
-   <Button
+    <TextView
+        android:id="@+id/details"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textSize="16sp"
+        android:visibility="gone"
+        tools:ignore="DuplicateIds">
+    </TextView>
+
+    <Button
        android:id="@+id/button1"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:text="Button yeni" />
+       android:text="Git" />
    <Button
        android:id="@+id/button2"
        android:layout_width="wrap_content"

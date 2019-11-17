@@ -7,9 +7,9 @@
     <string name="regControl">Kayıt Kontrol</string>
     <string name="register">Kayıt Ol</string>
 
-    <string name="serverUrl">http://www.masterteknoloji.net:8080/Navigator/rest</string>
-    <string name="serverUrl2">http://www.masterteknoloji.net:8080/Navigator/rest</string>
-    <string name="serverUrl3">http://www.masterteknoloji.net:8080/Navigator/rest</string>
+    <string name="serverUrl">http://192.168.1.184:8080</string>
+    <string name="serverUrl2">http://192.168.1.33:8080/Navigator/rest</string>
+    <string name="serverUrl3">http://192.168.1.33:8080/Navigator/rest</string>
     <string name="sender">160087228600</string>
     <string name="emulator">false</string>
 </resources>

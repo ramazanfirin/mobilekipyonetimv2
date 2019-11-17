@@ -96,6 +96,7 @@ public class GetOrderListTask extends AsyncTask<String, Void, String> {
 			String bina="";
 			String lat="";
 			String lng="";
+			String	description="";
 			
 			JSONArray a = new JSONArray(unused);
 			HashMap<String, String> map = new HashMap<String, String>();
@@ -105,31 +106,36 @@ public class GetOrderListTask extends AsyncTask<String, Void, String> {
 				Integer test = (Integer)b.get("id");
 			    id  = test.toString();
 			}
-			if(b.get("ilce")!=null&& !b.get("ilce").toString().equals("null"))
+			if(b.has("ilce")&& !b.get("ilce").toString().equals("null"))
 				ilce = (String)b.get("ilce");
 			
-			if(b.get("mahalle")!=null&& !b.get("mahalle").toString().equals("null"))
+			if(b.has("mahalle")&& !b.get("mahalle").toString().equals("null"))
 				mahalle = (String)b.get("mahalle");
 			
-			if(b.get("sokak")!=null&& !b.get("sokak").toString().equals("null"))
+			if(b.has("sokak")&& !b.get("sokak").toString().equals("null"))
 				sokak = (String)b.get("sokak");
 			
-			if(b.get("address")!=null&& !b.get("address").toString().equals("null"))
+			if(b.has("address")&& !b.get("address").toString().equals("null"))
 				adres = (String)b.get("address");
 			
 			//if((b.get("bina")!=null)&&(b.get("bina").toString()))
-			if(b.get("bina")!=null && !b.get("bina").toString().equals("null"))
+			if(b.has("bina")&& !b.get("bina").toString().equals("null"))
 				bina = (String)b.get("bina");
 
-			if(b.get("lat")!=null)
+			if(b.has("lat"))
 				lat = (String)b.get("lat");
 			
-			if(b.get("lng")!=null)
+			if(b.has("lng"))
 				lng = (String)b.get("lng");
-			
+
+			if(b.has("description") ) {
+				String value  =b.getString("description");
+				if(!value.equals("null"))
+					adres = value;
+			}
 //			list.add(id);
 //			list.add(ilce);
-			
+
 			//strArray = list.toArray(new String[list.size()]);
 			
 			map = new HashMap<String, String>();
@@ -141,6 +147,7 @@ public class GetOrderListTask extends AsyncTask<String, Void, String> {
 			map.put("adress", adres);
 			map.put("lat", lat);
 			map.put("lng", lng);
+				map.put("description", description);
 
 			orderList.add(map);
 			}

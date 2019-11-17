@@ -8,7 +8,7 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.ActionBarActivity;
+
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -36,7 +36,7 @@ import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
-public class ManuelSelectionActivity extends ActionBarActivity implements OnItemSelectedListener {
+public class ManuelSelectionActivity extends Activity implements OnItemSelectedListener {
 
 	int mCorePoolSize = 60;
 	int mMaximumPoolSize = 80;

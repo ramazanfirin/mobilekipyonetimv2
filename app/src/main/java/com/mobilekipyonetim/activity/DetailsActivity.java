@@ -32,6 +32,7 @@ public class DetailsActivity extends BaseActivity //implements ConnectionCallbac
 	TextView lat;
 	TextView lng;
 	TextView id;
+	TextView description;
 	Button button;
 	
 	//String url = "http://192.168.56.1:8080/Navigator/rest/order";
@@ -58,7 +59,7 @@ public class DetailsActivity extends BaseActivity //implements ConnectionCallbac
 		bina.setText(map.get("bina"));
 		
 		address = (EditText) findViewById( R.id.address );
-		address.setText(map.get("address"));
+		address.setText(map.get("adress"));
 		
 		lat = (TextView) findViewById( R.id.lat );
 		lat.setText(map.get("lat"));
@@ -68,7 +69,10 @@ public class DetailsActivity extends BaseActivity //implements ConnectionCallbac
 		
 		id = (TextView) findViewById( R.id.id );
 		id.setText(map.get("id"));
-		
+
+		description = (TextView) findViewById( R.id.details );
+		description.setText(map.get("description"));
+
 		button = (Button) findViewById( R.id.button1 );
 		button.setOnClickListener(new OnClickListener() {
              @Override
@@ -130,6 +134,7 @@ public class DetailsActivity extends BaseActivity //implements ConnectionCallbac
              }
      });
 	Button button2 = (Button) findViewById( R.id.button2 );
+	button2.setVisibility(View.INVISIBLE);
 	button2.setOnClickListener(new OnClickListener() {
 
 		@Override

@@ -94,7 +94,7 @@ public class OrderListActivity extends BaseActivity{
 
 //new RequestItemsServiceTask().execute(getServerUrl()+"/hello/"+getDeviceId());
       try {
-		new GetOrderListTask(this).executeOnExecutor(mCustomThreadPoolExecutor,getServerUrl()+"/hello/"+getDeviceId());
+		new GetOrderListTask(this).executeOnExecutor(mCustomThreadPoolExecutor,getServerUrl()+"/api/tasks");
 	} catch (Exception e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
@@ -102,7 +102,7 @@ public class OrderListActivity extends BaseActivity{
 	}   
 	
 	public void refreshPage(View v){
-		new GetOrderListTask(this).execute(getServerUrl()+"/hello/"+getDeviceId());
+		new GetOrderListTask(this).execute(getServerUrl()+"/api/tasks");
 		Log.i("mobilEkip","Refresh Yapıldı.");
 	}
 }

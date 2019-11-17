@@ -1,20 +1,23 @@
 package com.mobilekipyonetim.service;
 
+import android.annotation.TargetApi;
 import android.app.ProgressDialog;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
 import com.mobilekipyonetim.activity.MainActivity;
 
+@TargetApi(Build.VERSION_CODES.CUPCAKE)
 public class BackgroundTask extends AsyncTask<Void, Integer, Void> {
 
 
 
-    //private ProgressBar spinner = new ProgressBar();
+   //asList //private ProgressBar spinner = new ProgressBar();
 
-    @Override
+    //@Override
     protected void onPreExecute() {
         super.onPreExecute();
         //spinner.setVisibility(View.VISIBLE);
@@ -50,7 +53,7 @@ public class BackgroundTask extends AsyncTask<Void, Integer, Void> {
 
     @Override
     protected void onCancelled(Void result) {
-        super.onCancelled(result);
+        //super.onCancelled(result);
 
     }
 }

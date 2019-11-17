@@ -1,6 +1,7 @@
 package com.mobilekipyonetim.util;
 
 import android.content.res.Resources;
+import android.net.Uri;
 
 import com.mobilekipyonetim.R;
 import com.mobilekipyonetim.activity.KeyValueDTO;
@@ -15,13 +16,15 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ManuelSelectionUtil {
-	
-	static String serverAddress  ="http://www.masterteknoloji.net:8080";
-	//static String  serverAddress = Resources.getSystem().getString(R.string.serverUrl);
+
+
+	//static String serverAddress  ="http://ec2-52-11-218-57.us-west-2.compute.amazonaws.com:8090/api/cbs-data-controller/";
+	static String  serverAddress = Resources.getSystem().getString(R.string.serverUrl);
 
 	public static KeyValueDTO[] getIlceList(){
 		return convertToArray(getData("getIlceList"));
@@ -52,7 +55,10 @@ public class ManuelSelectionUtil {
 	
 	public static String getDataAsString(String... urls) {
 	      String response = "";
-	      String url = serverAddress+"/Navigator/rest/hello/"+urls[0];
+
+	      //String url = serverAddress+"/"+Uri.encode(urls[0]);;
+		String url = serverAddress+"/"+urls[0].replace(" ","%20");;
+		   //String query = URLEncoder.encode("apples oranges", "utf-8");
 	       DefaultHttpClient client = new DefaultHttpClient();
 	        HttpGet httpGet = new HttpGet(url);
 	        try {
