@@ -23,8 +23,8 @@ import java.util.List;
 public class ManuelSelectionUtil {
 
 
-	//static String serverAddress  ="http://ec2-52-11-218-57.us-west-2.compute.amazonaws.com:8090/api/cbs-data-controller/";
-	static String  serverAddress = Resources.getSystem().getString(R.string.serverUrl);
+	static String serverAddress  ="http://ec2-52-11-218-57.us-west-2.compute.amazonaws.com:8090/api/cbs-data-controller/";
+	//static String  serverAddress = Resources.getSystem().getString(R.string.serverUrl);
 
 	public static KeyValueDTO[] getIlceList(){
 		return convertToArray(getData("getIlceList"));
